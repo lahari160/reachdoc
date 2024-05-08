@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Responsive Registration Form | CodingLab </title>
+    <link rel="stylesheet" href="stylesignup.css">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="container">
+    <div class="title">Registration</div>
+    <div class="content">
+      <form name="the form" action="" method="post"
+        onSubmit="var the_result = validateEmailAddress(this.email_address.value);phoneNumberCheck(this.phoneNumber.value); return the_result;">
+        <div class="user-details">
+          <div class="input-box">
+            <span class="details">Full Name</span>
+            <input type="text" placeholder="Enter your name" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Username</span>
+            <input type="text" placeholder="Enter your username" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Email</span>
+            <input type="text" placeholder="Enter your email" id="email" name="email_address" required>
+            
+          </div>
+          <div class="input-box">
+            <span class="details">Phone Number</span>
+            <input type="text" placeholder="Enter your number" name="phoneNumber" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Password</span>
+            <input type="password" placeholder="Enter your password" required>
+          </div>
+          <div class="input-box">
+            <span class="details">Confirm Password</span>
+            <input type="password" placeholder="Confirm your password" required>
+          </div>
+        </div>
+        <div class="gender-details">
+          <input type="radio" name="gender" id="dot-1">
+          <input type="radio" name="gender" id="dot-2">
+          <input type="radio" name="gender" id="dot-3">
+          <span class="gender-title">Gender</span>
+          <div class="category">
+            <label for="dot-1">
+            <span class="dot one"></span>
+            <span class="gender">Male</span>
+          </label>
+          <label for="dot-2">
+            <span class="dot two"></span>
+            <span class="gender">Female</span>
+          </label>
+          <label for="dot-3">
+            <span class="dot three"></span>
+            <span class="gender">Prefer not to say</span>
+            </label>
+          </div>
+        </div>
+        <div class="button">
+          <a href="index.html"><input type="submit" value="Register"></a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</body>
+<script type="text/javascript">
+ 
+  // JavaScript code for email validation
+  // without using regular expression
+  
+  function validateEmailAddress(emailAddress) {
+      let atSymbol = emailAddress.indexOf("@");
+      let dotSymbol = emailAddress.lastIndexOf(".");
+      let spaceSymbol = emailAddress.indexOf(" ");
+
+      if ((atSymbol != -1) &&
+          (atSymbol != 0) &&
+          (dotSymbol != -1) &&
+          (dotSymbol != 0) &&
+          (dotSymbol > atSymbol + 1) &&
+          (emailAddress.length > dotSymbol + 1) &&
+          (spaceSymbol == -1)) {
+          return true;
+      } else {
+          alert("Error !!! Email address is not valid.");
+          return false;
+      }
+} 
+function phoneNumberCheck(phoneNumber)
+{
+   var regEx = /^(\d{3})[- ] ? (\d{3})[- ]?(\d{4})$/;
+   if(phoneNumber.value.match(regEx))
+     {
+      return true;
+     }
+   else
+     {
+     alert("Please enter a valid phone number.");
+     return false;
+    }
+}
+</script>
+</html>
